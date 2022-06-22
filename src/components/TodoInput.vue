@@ -16,10 +16,11 @@ export default {
     },
     methods: {
         addTodo: function() {
-            console.log(this.newTodoItem);
-            // input 값 로컬스토리지에 저장해보기
-            localStorage.setItem("input value", this.newTodoItem);
-            this.clearInput();
+            if (this.newTodoItem !== '') {
+                var obj = {completed: false, item: this.newTodoItem};
+                localStorage.setItem(this.newTodoItem, JSON.stringify(obj));
+                this.clearInput();
+            }
         },
         clearInput: function() {
         // input 박스 초기화 방법
