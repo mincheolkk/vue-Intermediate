@@ -5,13 +5,27 @@
         <span class="addContainer" @click="addTodo"> 
             <i class="far fa-calendar-plus addBtn"></i>
         </span>
+
+        <Modal :show="showModal" @close="showModal = false">
+            <template #header>
+                <h3>custom header! !
+                    <i class="closeModalBtn fas fa-times" @click="showModal = false"></i> 
+                </h3>
+            </template>
+            <template #body>
+                하이
+            </template>
+        </Modal>
     </div>
 </template>
 <script>
+import Modal from './common/AlertModal.vue'
+
 export default {
     data: function() {
         return {
-            newTodoItem: ""
+            newTodoItem: "",
+            showModal: false
         }
     },
     methods: {
@@ -19,6 +33,9 @@ export default {
             if (this.newTodoItem !== '') {
                 this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();
+            } else {
+                console.log(this.showModal)
+                this.showModal = !this.showModal;
             }
         },
         clearInput: function() {
@@ -26,6 +43,9 @@ export default {
             this.newTodoItem = '';
         }
     },
+    components :{
+        Modal: Modal
+    }
 
 }
 </script>
@@ -56,5 +76,7 @@ input:focus {
     color: white;
     vertical-align: middle;
 }
-
+.closeModalBtn {
+    color: #42b983;
+}
 </style>
