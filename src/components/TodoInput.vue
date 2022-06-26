@@ -9,7 +9,7 @@
         <Modal :show="showModal" @close="showModal = false">
             <template #header>
                 <h3>custom header! !
-                    <i class="closeModalBtn fas fa-times" @click="showModal = false"></i> 
+                    <i class="closeModalBtn fas fa-times" @click="showModal"></i> 
                 </h3>
             </template>
             <template #body>
@@ -22,14 +22,14 @@
 import Modal from './common/AlertModal.vue'
 
 export default {
-    data: function() {
+    data() {
         return {
             newTodoItem: "",
             showModal: false
         }
     },
     methods: {
-        addTodo: function() {
+        addTodo() {
             if (this.newTodoItem !== '') {
                 this.$emit('addTodoItem', this.newTodoItem);
                 this.clearInput();
@@ -38,13 +38,13 @@ export default {
                 this.showModal = !this.showModal;
             }
         },
-        clearInput: function() {
+        clearInput() {
         // input 박스 초기화 방법
             this.newTodoItem = '';
         }
     },
     components :{
-        Modal: Modal
+        Modal
     }
 
 }
