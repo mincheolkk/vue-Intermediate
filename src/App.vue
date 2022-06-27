@@ -26,34 +26,33 @@ export default {
       }
   },
 
-  created() {
-        if (localStorage.length > 0) {
-            for (let i =0; i<localStorage.length; i++) {
-                if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-                    this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-            }
-          }
-        }
-  },
+  // created() {
+  //       if (localStorage.length > 0) {
+  //           for (let i =0; i<localStorage.length; i++) {
+  //               if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
+  //                   this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+  //           }
+  //         }
+  //       }
+  // },
 
   methods: {
     addOneItem(todoItem) {
       const obj = {completed: false, item: todoItem};
       localStorage.setItem(todoItem, JSON.stringify(obj));
-      this.todoItems.push(obj);
+      this.$store.state.todoItems.push(obj);
       console.log(this.todoItems);
     },
 
     removeOneItem(todoItem, index){
-      console.log("33");
-      this.todoItems.splice(index, 1);
+      this.$store.state.todoItems.splice(index, 1);
       localStorage.removeItem(todoItem.item);
     },
 
     toggleOneItem(todoItem, index){
       // todoItem.completed = !todoItem.completed;
 
-      this.todoItems[index].completed = !this.todoItems[index].completed;
+      this.$store.state.todoItems[index].completed = !this.todoItems[index].completed;
 
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
@@ -62,7 +61,7 @@ export default {
 
     clearAllItems() {
       localStorage.clear();
-      this.todoItems = [];
+      this.$store.state.todoItems = [];
     }
   },
 
