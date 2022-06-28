@@ -1,12 +1,9 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-    <TodoList 
-      v-bind:propsdata="todoItems"
-      v-on:removeItem="removeOneItem" 
-      v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
@@ -26,43 +23,33 @@ export default {
       }
   },
 
-  // created() {
-  //       if (localStorage.length > 0) {
-  //           for (let i =0; i<localStorage.length; i++) {
-  //               if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-  //                   this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-  //           }
-  //         }
-  //       }
-  // },
-
   methods: {
-    addOneItem(todoItem) {
-      const obj = {completed: false, item: todoItem};
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      this.$store.state.todoItems.push(obj);
-      console.log(this.todoItems);
-    },
+    // addOneItem(todoItem) {
+    //   const obj = {completed: false, item: todoItem};
+    //   localStorage.setItem(todoItem, JSON.stringify(obj));
+    //   this.$store.state.todoItems.push(obj);
+    //   console.log(this.todoItems);
+    // },
 
-    removeOneItem(todoItem, index){
-      this.$store.state.todoItems.splice(index, 1);
-      localStorage.removeItem(todoItem.item);
-    },
+    // removeOneItem(todoItem, index){
+    //   this.$store.state.todoItems.splice(index, 1);
+    //   localStorage.removeItem(todoItem.item);
+    // },
 
-    toggleOneItem(todoItem, index){
-      // todoItem.completed = !todoItem.completed;
+    // toggleOneItem(todoItem, index){
+    //   // todoItem.completed = !todoItem.completed;
 
-      this.$store.state.todoItems[index].completed = !this.todoItems[index].completed;
+    //   this.$store.state.todoItems[index].completed = !this.todoItems[index].completed;
 
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
-      console.log(index);
-    },
+    //   localStorage.removeItem(todoItem.item);
+    //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
+    //   console.log(index);
+    // },
 
-    clearAllItems() {
-      localStorage.clear();
-      this.$store.state.todoItems = [];
-    }
+    // clearAllItems() {
+    //   localStorage.clear();
+    //   this.$store.state.todoItems = [];
+    // }
   },
 
   components: {
