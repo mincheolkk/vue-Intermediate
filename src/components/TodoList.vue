@@ -1,7 +1,7 @@
 <template>
     <div>
         <TransitionGroup tag="ul" name="fade" class="container">
-                <li v-for="(todoItem, index) in this.$store.state.todoItems" v-bind:key="todoItem.item" class="shadow">
+                <li v-for="(todoItem, index) in this.todoItems" v-bind:key="todoItem.item" class="shadow">
                     <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted: todoItem.completed}" 
                         v-on:click="toggleComplete(todoItem, index)"></i>                
                     <span v-bind:class="{textCompleted: todoItem.completed}">{{todoItem.item}}</span>
@@ -13,6 +13,8 @@
     </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
     methods: {
         removeTodo(todoItem, index) {
@@ -23,6 +25,16 @@ export default {
             this.$store.commit('toggleOneItem', {todoItem, index})
         }
     },
+    computed: {
+        // todoItems() {
+        //     return this.$store.getters.storedTodoItems
+        // }
+        // ...mapGetters(['storedTodoItems'])
+        // 위와 똑같은 방식인데 이름 지어주기
+        ...mapGetters({
+            todoItems: 'storedTodoItems'
+        })
+    }
 
 }
 </script>
