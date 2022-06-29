@@ -24,32 +24,7 @@ export default {
   },
 
   methods: {
-    // addOneItem(todoItem) {
-    //   const obj = {completed: false, item: todoItem};
-    //   localStorage.setItem(todoItem, JSON.stringify(obj));
-    //   this.$store.state.todoItems.push(obj);
-    //   console.log(this.todoItems);
-    // },
 
-    // removeOneItem(todoItem, index){
-    //   this.$store.state.todoItems.splice(index, 1);
-    //   localStorage.removeItem(todoItem.item);
-    // },
-
-    // toggleOneItem(todoItem, index){
-    //   // todoItem.completed = !todoItem.completed;
-
-    //   this.$store.state.todoItems[index].completed = !this.todoItems[index].completed;
-
-    //   localStorage.removeItem(todoItem.item);
-    //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem))
-    //   console.log(index);
-    // },
-
-    // clearAllItems() {
-    //   localStorage.clear();
-    //   this.$store.state.todoItems = [];
-    // }
   },
 
   components: {

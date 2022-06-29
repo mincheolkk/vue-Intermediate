@@ -11,10 +11,6 @@ export default {
         ...mapMutations({
             clearTodo: 'clearAllItems'
         })
-        // clearTodo: function() {
-        //     this.$store.commit('clearAllItems');
-        // }
-
     },
 
 }

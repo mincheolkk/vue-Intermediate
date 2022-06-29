@@ -17,16 +17,10 @@ import { mapGetters, mapMutations } from 'vuex'
 
 export default {
     methods: {
-
         ...mapMutations({
             removeTodo: 'removeOneItem',
             toggleComplete: 'toggleOneItem'
-        }
-        ),
-
-        // toggleComplete(todoItem, index) { 
-        //     this.$store.commit('toggleOneItem', {todoItem, index})
-        // }
+        })
     },
     computed: {
         // todoItems() {

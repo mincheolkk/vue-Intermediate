@@ -20,6 +20,7 @@
 </template>
 <script>
 import Modal from './common/AlertModal.vue'
+import axios from "axios";
 
 export default {
     data() {
@@ -46,8 +47,17 @@ export default {
     },
     components :{
         Modal: Modal
+    },
+    created() {
+        axios
+            .get('https://438d14e0-58fe-4eb2-8704-c2b65596f942.mock.pstmn.io/test')
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
-
 }
 </script>
 <style scoped>

@@ -7,7 +7,6 @@
           <div class="modal-header">
             <slot name="header">
               경고
-              <i class="fas fa-times"></i>  
             </slot>
 
           </div>
